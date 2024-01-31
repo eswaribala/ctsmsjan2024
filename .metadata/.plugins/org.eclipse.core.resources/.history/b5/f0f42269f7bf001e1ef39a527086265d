@@ -1,0 +1,36 @@
+package com.cts.banking.utility;
+
+import java.util.Scanner;
+
+import com.cts.banking.models.Address;
+import com.cts.banking.models.Customer;
+import com.cts.banking.models.FullName;
+
+
+
+public class BankingApplication {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	    System.out.println("Enter no of customers");
+	    Scanner scanner=new Scanner(System.in);	    
+	    int customerCount=scanner.nextInt();
+	    
+	    //create array of customers
+	    Customer[] customers=new Customer[customerCount];
+	    
+	    //add values to the array
+	    
+	    for(int i=0;i<customerCount;i++) {
+	    	customers[i]=new Customer(381458523L,
+					new FullName("Parameswari","","Bala"),
+					"param@gmail.com",9952032861L,
+				    new Address("16","First St","Chennai",602024L),
+				    "Test@123");
+	    }
+		
+		
+		
+	}
+
+}
