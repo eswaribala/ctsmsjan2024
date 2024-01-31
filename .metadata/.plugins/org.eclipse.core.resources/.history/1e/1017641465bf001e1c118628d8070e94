@@ -1,0 +1,15 @@
+package com.cts.banking.models;
+
+import lombok.Data;
+
+@Data
+
+public class Customer {
+	private long accountNo;
+	private FullName name;
+	private String email;
+	private long contactNo;
+	private Address address;
+	private String password;
+
+}

@@ -1,0 +1,7 @@
+package com.cts.banking.models;
+
+public class Customer {
+	private long accountNo;
+	private FullName name;
+
+}

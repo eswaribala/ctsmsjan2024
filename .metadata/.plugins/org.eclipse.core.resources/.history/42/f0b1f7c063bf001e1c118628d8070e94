@@ -1,0 +1,8 @@
+package com.cts.banking.models;
+
+public class Address {
+	private String doorNo;
+	private String streetName;
+	private String city;
+
+}
