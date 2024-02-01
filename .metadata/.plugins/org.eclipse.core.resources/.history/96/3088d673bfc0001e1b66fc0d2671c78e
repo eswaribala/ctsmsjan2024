@@ -25,7 +25,7 @@ public class TransactionApplication {
 				transactions[i][j]=new Transaction(
 						new Random().nextInt(100000),
 						LocalDateTime.now(),new Random().nextInt(10000),
-						"Sender"+j,"Receiver"+j,null);			}		
+						"Sender"+j,"Receiver"+j);			}		
 			
 		}
 		Transaction transaction=null;

@@ -1,0 +1,12 @@
+package com.cts.banking.utility;
+
+public class IndividualApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Individual individual =new Individual();
+		
+	}
+
+}

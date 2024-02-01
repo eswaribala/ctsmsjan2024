@@ -6,12 +6,9 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Setter
-@Getter
+@Data
 //@AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
@@ -25,15 +22,6 @@ public class Individual extends Customer{
 		this.gender = gender;
 		this.dob = dob;
 	}
-	@Override
-	public String toString() {
-		// TODO Auto-generated method stub
-		return this.accountNo+","+this.contactNo+","+this.name.getFirstName()+","+this.gender+
-				this.dob;
-	}
-	
-	
-	
 	
 	
 	
