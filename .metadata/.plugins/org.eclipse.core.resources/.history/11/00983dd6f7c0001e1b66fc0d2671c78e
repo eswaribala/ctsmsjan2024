@@ -1,0 +1,34 @@
+package com.cts.banking.dao;
+
+import java.util.List;
+
+import com.cts.banking.models.Customer;
+
+public class CustomerDaoImpl implements CustomerDAO {
+
+	@Override
+	public Customer create(Customer customer) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Customer> getAllCustomers() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Customer update(long accountNo, String email, long contactNo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(long accountNo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	
+}
