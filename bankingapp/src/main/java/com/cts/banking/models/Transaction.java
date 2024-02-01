@@ -13,5 +13,6 @@ public class Transaction {
 	private long amount;
 	private String senderName;
 	private String receiverName;
-
+	//has relationship
+    private Account account;
 }

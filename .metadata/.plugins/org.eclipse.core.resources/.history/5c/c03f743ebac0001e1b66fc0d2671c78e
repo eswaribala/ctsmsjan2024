@@ -1,0 +1,13 @@
+package com.cts.banking.models;
+
+import java.time.LocalDate;
+
+import lombok.Data;
+
+@Data
+public class Individual extends Customer{
+	
+	private Gender gender;
+	private LocalDate dob;
+
+}

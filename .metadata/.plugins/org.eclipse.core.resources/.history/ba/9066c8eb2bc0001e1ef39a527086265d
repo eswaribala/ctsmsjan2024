@@ -1,0 +1,20 @@
+package com.cts.banking.utility;
+
+public class VarArgsDemo {
+
+	private static String genQualification(String... qualifications) {
+		String result="";
+		for(String qualification: qualifications) {
+			result.join(qualification);
+		}
+		return result;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		
+
+	}
+
+}
