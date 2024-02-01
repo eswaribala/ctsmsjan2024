@@ -3,7 +3,7 @@ package com.cts.banking.utility;
 import com.cts.banking.models.Customer;
 
 public class OrderOfInvocation {
-	Customer customer=new Customer();
+	//Customer customer=new Customer();
 
 	{
 		System.out.println("Instance Block....");

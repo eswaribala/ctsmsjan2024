@@ -17,7 +17,7 @@ public class BankingApplication {
 	}	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 
+		/* 
 	    System.out.println("Enter no of customers");
 	    Scanner scanner=new Scanner(System.in);	    
 	    int customerCount=scanner.nextInt();	    
@@ -39,7 +39,7 @@ public class BankingApplication {
 	    	System.out.println(customer.getAccountNo()
 	    			+","+customer.getName().getFirstName()+"-"+customer.getName().getLastName());
 	    }
-		
+		*/
 		
 	}
 

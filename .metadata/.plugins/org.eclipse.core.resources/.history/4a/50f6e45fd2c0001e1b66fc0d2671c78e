@@ -1,0 +1,26 @@
+package com.cts.banking.utility;
+
+import java.time.LocalDate;
+import java.util.Random;
+
+import com.cts.banking.models.Address;
+import com.cts.banking.models.Customer;
+import com.cts.banking.models.FullName;
+import com.cts.banking.models.Gender;
+import com.cts.banking.models.Individual;
+
+public class IndividualApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+       //polymorphism  
+		Customer customer=new Individual();
+		customer.get
+		
+		
+		
+		
+		
+	}
+
+}

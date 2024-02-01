@@ -1,0 +1,35 @@
+package com.cts.banking.utility;
+
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import com.cts.banking.models.Individual;
+
+public class ExceptionDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub		
+		Scanner scanner =new Scanner(System.in);
+		int rows=0;
+		Individual[] individuals;
+		try {
+		System.out.println("Enter no of rows");
+		rows=scanner.nextInt();
+		System.out.println("Rows="+rows);
+		individuals=new Individual[rows];
+		
+		}
+		
+		catch(InputMismatchException ex) {
+			System.out.println(ex.getMessage());
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+		
+		
+
+	}
+
+}

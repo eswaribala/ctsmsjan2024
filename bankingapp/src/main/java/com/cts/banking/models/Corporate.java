@@ -8,8 +8,14 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
+
 public class Corporate extends Customer{
 	private CompanyType companyType;
+
+	@Override
+	public Customer getCustomer() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

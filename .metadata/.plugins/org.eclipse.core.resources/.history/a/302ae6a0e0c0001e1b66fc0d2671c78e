@@ -1,0 +1,18 @@
+package com.cts.banking.utility;
+
+import com.cts.banking.models.Individual;
+
+public class IndividualApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+      Individual individual1=new Individual();
+      Individual individual2=new Individual();
+		
+		
+		
+		
+		
+	}
+
+}

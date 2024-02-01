@@ -1,0 +1,5 @@
+package com.cts.banking.exceptions;
+
+public class InvalidAgeException extends RuntimeException{
+
+}
