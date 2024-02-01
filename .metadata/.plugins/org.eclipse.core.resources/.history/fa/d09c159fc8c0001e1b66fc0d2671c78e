@@ -8,23 +8,23 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-@Data
-//@Getter
+
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 
 public class Customer{
 //implements Comparable<Customer>{
-	protected long accountNo;
-	protected FullName name;
-	//@Setter
-	protected String email;
-	//@Setter
-	protected long contactNo;
-	protected Address address;
-	protected String password;
+	private long accountNo;
+	private FullName name;
+	@Setter
+	private String email;
+	@Setter
+	private long contactNo;
+	private Address address;
+	private String password;
 	//has relationship
-	protected List<Account> accountList;
+	private List<Account> accountList;
 	
 	
 

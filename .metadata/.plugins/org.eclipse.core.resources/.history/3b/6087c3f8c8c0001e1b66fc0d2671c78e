@@ -14,6 +14,12 @@ public class IndividualApp {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+		Customer customer=new Customer(1,
+				new FullName("Customer","",String.valueOf(i)),
+				"user@gmail.com",99520+new Random().nextInt(1000000),
+			    new Address("16","First St","Chennai",602024L),
+			    "Test@123", null);
+		
 		
 		Individual individual=new Individual(
 				1L,

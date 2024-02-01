@@ -10,10 +10,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Account {
-	protected long runningTotal;
-	protected LocalDate dop;
+	private long runningTotal;
+	private LocalDate dop;
 	//has relationship
-	protected Customer customer;
-	protected List<Transaction> transactionList;
+	private Customer customer;
+	private List<Transaction> transactionList;
 
 }

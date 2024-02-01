@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Transaction {
-	protected long transactionId;
-	protected LocalDateTime timestamp;
-	protected long amount;
-	protected String senderName;
-	protected String receiverName;
+	private long transactionId;
+	private LocalDateTime timestamp;
+	private long amount;
+	private String senderName;
+	private String receiverName;
 	//has relationship
-	protected Account account;
+    private Account account;
 }
