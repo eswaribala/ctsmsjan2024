@@ -37,7 +37,7 @@ public class Individual extends Customer{
 	public String toString() {
 	
 		// TODO Auto-generated method stub
-		return super.toString()+this.gender+this.dob;
+		return super.toString()+this.gender+","+this.dob;
 	}
 	@Override
 	public Customer getCustomer() {

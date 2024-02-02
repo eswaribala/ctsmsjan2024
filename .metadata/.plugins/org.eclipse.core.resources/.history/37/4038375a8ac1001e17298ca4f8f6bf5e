@@ -1,0 +1,18 @@
+package com.cts.banking.utility;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import com.cts.banking.models.Employee;
+
+public class SetDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		HashSet<Employee> javaTrained=new HashSet<Employee>();
+		HashSet<Employee> dotnetTrained=new HashSet<Employee>();
+
+	}
+
+}

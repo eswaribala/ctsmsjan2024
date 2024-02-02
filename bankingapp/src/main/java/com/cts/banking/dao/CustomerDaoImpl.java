@@ -44,13 +44,16 @@ public class CustomerDaoImpl implements CustomerDAO {
 	@Override
 	public boolean delete(long accountNo) {
 		boolean status=false;
+		Customer customerToBeDeleted=null;
 		// TODO Auto-generated method stub
 		for(Customer customer : customers) {
 			if(customer.getAccountNo()==accountNo) {				
-				customers.remove(customer);
-				status=true;
+				customerToBeDeleted=customer;				
 			}
 		}
+		
+		customers.remove(customerToBeDeleted);
+		status=true;
 		return status;
 	}
 

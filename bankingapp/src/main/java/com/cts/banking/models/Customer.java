@@ -8,12 +8,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
-
+@Data
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 
-public abstract class Customer{
+public  class Customer{
 //implements Comparable<Customer>{
 	protected long accountNo;
 	protected FullName name;
@@ -26,7 +26,10 @@ public abstract class Customer{
 	//has relationship
 	protected List<Account> accountList;
 	
-	public abstract Customer getCustomer();
-	
+	//public abstract Customer getCustomer();
+	public Customer getCustomer() {
+		// TODO Auto-generated method stub
+		return new Individual();
+	}
 
 }

@@ -1,0 +1,15 @@
+package com.cts.banking.utility;
+
+import com.cts.banking.dao.CustomerDaoImpl;
+import com.cts.banking.dao.CustomerDAO;
+public class CustomerDaoApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		CustomerDAO customerDao=new CustomerDaoImpl();
+		
+		
+	}
+
+}

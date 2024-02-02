@@ -1,0 +1,20 @@
+package com.cts.banking.utility;
+
+import java.util.Hashtable;
+
+import com.cts.banking.models.Customer;
+import com.cts.banking.models.Transaction;
+
+public class HashtableDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Hashtable<Customer,Transaction> transactions=
+				new Hashtable<Customer,Transaction>();
+		
+		
+
+	}
+
+}
