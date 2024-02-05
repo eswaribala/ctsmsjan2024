@@ -1,0 +1,16 @@
+package com.cts.banking.utility;
+
+import java.util.Random;
+
+import com.cts.banking.facades.OTPGenerator;
+
+public class LambdaTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		OTPGenerator otpGenerator=()-> return new Random().nextInt(9999);
+		
+	}
+
+}

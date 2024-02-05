@@ -1,0 +1,38 @@
+package com.cts.banking.utility;
+import java.util.Random;
+
+import com.cts.banking.dao.CustomerDAO;
+import com.cts.banking.dao.CustomerDaoImpl;
+import com.cts.banking.models.Address;
+import com.cts.banking.models.Customer;
+import com.cts.banking.models.FullName;
+public class StreamDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		CustomerDAO customerDao=new CustomerDaoImpl();
+		//add values to the array	    
+	    for(int i=1;i<100;i++) {
+	    	customerDao.create(new Customer(new Random().nextInt(500),
+					new FullName("Customer","",String.valueOf(i)),
+					"user"+i+"@gmail.com",99520+new Random().nextInt(1000000),
+				    new Address("16","First St","Chennai",602024L),
+				    "Test@123", null));	   	
+	    }	    
+	    //apply streaming
+	    customerDao.getAllCustomers().stream()
+	    .filter(c->c.getAccountNo()%2==1)
+	    .sorted()
+	    .map(c->c.getAccountNo()+","+c.getName().getFirstName())
+	    
+	    .limit(10)
+	    .skip(3)
+	    .forEach(System.out::println);
+	    
+	    
+		
+		
+	}
+
+}

@@ -1,0 +1,11 @@
+package com.cts.banking.facades;
+
+@FunctionalInterface
+public interface DataSupplier<T> {
+
+	T getData();
+	
+	public static int getOTP() {
+		return new Random().nextInt(9999);
+	}
+}

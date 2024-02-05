@@ -1,0 +1,26 @@
+package com.cts.banking.utility;
+
+import java.util.Random;
+
+import com.cts.banking.facades.OTPGenerator;
+import com.cts.banking.facades.VerticalTextCreator;
+
+public class LambdaTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		OTPGenerator otpGenerator=()-> new Random().nextInt(9999);
+		System.out.println(otpGenerator.getOTP());
+		
+		VerticalTextCreator verticalTextCreator=(message)-> message.toCharArray();
+		
+		for(char c : verticalTextCreator.printVerticalText("Parameswari")) {
+			System.out.println(c);
+		}
+		
+		
+	}
+
+}
+

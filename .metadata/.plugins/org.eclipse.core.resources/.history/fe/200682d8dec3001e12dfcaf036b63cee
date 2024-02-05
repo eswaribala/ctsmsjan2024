@@ -1,0 +1,9 @@
+package com.cts.banking.facades;
+
+@FunctionalInterface
+public interface DataSupplier<T> {
+
+	T getData();
+	
+	int getOTP();
+}

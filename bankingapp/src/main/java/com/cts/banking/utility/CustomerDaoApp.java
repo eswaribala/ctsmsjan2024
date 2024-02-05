@@ -32,12 +32,20 @@ public class CustomerDaoApp {
 	    
 	    
 	    //display the values
-	    Iterator<Customer> itr=customerDao.getAllCustomers().iterator();
+		/*
+		 * Iterator<Customer> itr=customerDao.getAllCustomers().iterator();
+		 * 
+		 * while(itr.hasNext()) {
+		 * 
+		 * System.out.println(itr.next()); }
+		 */
+	    //display collection using stream
 	    
-	    while(itr.hasNext()) {
-	    	
-	    	System.out.println(itr.next());
-	    }
+	    customerDao.getAllCustomers().stream().forEach(System.out::println); 
+	    
+	    
+	    
+	    
 	    System.out.println(customerDao.update(1, "param@gmail.com", 9952032862L));
 	    System.out.println(customerDao.delete(1));
 	    

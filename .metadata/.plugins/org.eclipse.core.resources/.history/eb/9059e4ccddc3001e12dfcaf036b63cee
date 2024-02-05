@@ -1,0 +1,7 @@
+package com.cts.banking.facades;
+
+@FunctionalInterface
+public interface DataSupplier {
+
+	T getData();
+}
