@@ -14,10 +14,10 @@ public class ConsumerThread implements Runnable{
 	public void consumer() {
 		String msg=null;
 		try {
-			while((msg=blockingQueue.take())!="exit") {
+			while(blockingQueue.take()!="exit") {
 				try {
 					System.out.println("Consumer Reading....");
-					System.out.println(msg);
+					System.out.println(blockingQueue.take());
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
