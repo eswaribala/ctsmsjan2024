@@ -13,7 +13,7 @@ public class ProducerThread implements Runnable {
 		
 		for(int i=0;i<100;i++) {
 			try {
-				//System.out.println("Producer Writing....");
+				System.out.println("Producer Writing....");
 				blockingQueue.put("Message"+i);
 				if(i==99) {
 					blockingQueue.put("exit");
