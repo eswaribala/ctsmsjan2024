@@ -1,0 +1,16 @@
+package com.cts.banking.utility;
+
+import com.cts.banking.models.BankAccount;
+
+public class ThreadTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		BankAccount bankAccount=new BankAccount(1000);
+		new Thread(bankAccount,"Thread-A",500);
+		
+		
+	}
+
+}

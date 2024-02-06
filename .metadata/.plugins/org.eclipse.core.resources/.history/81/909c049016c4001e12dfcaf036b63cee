@@ -1,0 +1,22 @@
+package com.cts.banking.utility;
+
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.util.List;
+import java.util.Set;
+
+public class DateTimeAPI {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+	 ZoneId.getAvailableZoneIds().stream().sorted()	
+	 .forEach(z->System.out.println(LocalDateTime.now(ZoneId.of(z))));
+	 
+	 
+	 
+
+	}
+
+}

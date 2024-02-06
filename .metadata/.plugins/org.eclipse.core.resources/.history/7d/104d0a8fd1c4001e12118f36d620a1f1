@@ -1,0 +1,36 @@
+package com.cts.banking.threads;
+
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
+
+public class ProducerThread implements Runnable {
+	
+	private BlockingQueue<String> blockingQueue;
+	
+	
+	public ProducerThread(BlockingQueue<String> blockingQueue) {
+		super();
+		this.blockingQueue = blockingQueue;
+	}
+
+
+
+	public void producer() {
+		
+		for(int i=0;i<100;i++) {
+			blockingQueue.put("Message"+i);
+		}
+		
+		
+		
+	}
+
+	
+	
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
