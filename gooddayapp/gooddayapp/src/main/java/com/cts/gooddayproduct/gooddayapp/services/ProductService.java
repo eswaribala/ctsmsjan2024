@@ -13,7 +13,7 @@ public class ProductService {
 	
 	public Product saveProducts(Product product) {
 		
-		if(product.getItemCode()>0) {
+		if(product.getItemName().length()>0) {
 			return this.productRepository.save(product);
 		}
 		else

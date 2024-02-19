@@ -52,3 +52,18 @@ input[type="submit"]{
 	 margin-left: 20%;
 }
 
+.aClass{
+	text-decoration: none;
+     background-color: lime;
+     color: black; 
+     margin-left: 30%;
+     font-size: xx-large;
+}
+
+.aClass:hover {
+	background-color: black;
+     color: lime; 
+     margin-left: 30%;
+     font-size: xx-large;
+}
+

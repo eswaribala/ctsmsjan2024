@@ -28,7 +28,7 @@ public class ProductController {
 	@PostMapping("/save")
 	public String saveProduct(@ModelAttribute("product") Product product, Model model) {
 		
-		log.info(""+product.getItemCode());
+		log.info(""+product.getItemName());
 		
 		Product productResponse=productService.saveProducts(product);
 		

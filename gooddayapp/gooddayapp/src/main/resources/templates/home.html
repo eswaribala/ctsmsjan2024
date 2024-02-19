@@ -18,13 +18,15 @@
 </article>
 </header>
 <article>
+<a href="#" class="aClass">Show All The Products</a>
+
 <form class="formClass" method="post" action="#" 
     th:action="@{/save}" th:object="${product}">
 <fieldset class="fieldSetClass">
 <legend class="legendClass">Enter Product Details</legend>
-<label>Item Code</label>
+<!-- <label>Item Code</label>
 <input type="number" th:field="*{itemCode}"  placeholder="Item Code" />
-<br/>
+<br/> -->
 <label>Item Name</label>
 <input type="text"   th:field="*{itemName}"  placeholder="Item Name" 
     pattern="[a-zA-Z]{3,50}"/>
