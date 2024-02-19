@@ -23,5 +23,24 @@
 
 .titleClass{
 	width: 80%;
+	font-size: xx-large;
+	margin-left: 30%;
+}
+
+.formClass{
+	width: 10%;
+	background-color: lime;
+	margin-left: 40%;
+	margin-top:5%;
+	font-size: large;
+}
+.fieldSetClass{
+	width: 10%;
+	background-color: lime;
+}
+
+.legend{
+	width: 10%;
+	background-color: lime;
 }
 
