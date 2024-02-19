@@ -28,14 +28,15 @@
 }
 
 .formClass{
-	width: 10%;
+	width: 15%;
 	background-color: lime;
 	margin-left: 40%;
 	margin-top:5%;
 	font-size: large;
 }
 .fieldSetClass{
-	width: 15%;
+	width: 80%;
+	margin-left: 5%;
 	background-color: lime;
 }
 

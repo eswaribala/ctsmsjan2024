@@ -21,12 +21,19 @@
 <form class="formClass" method="post" th:object="${product}">
 <fieldset class="fieldSetClass">
 <legend class="legendClass">Enter Product Details</legend>
-
+<label>Item Code</label>
 <input type="number" th:field="*{itemCode}"  placeholder="Item Code" />
+<br/>
+<label>Item Name</label>
 <input type="text"   th:field="*{itemName}"  placeholder="Item Name" 
     pattern="[a-zA-Z]{3,50}"/>
+<br/>    
+<label>Unit Price</label>    
 <input type="number"  th:field="*{unitPrice}"  placeholder="Unit Price"/>
+<br/>
+<label>Quantity</label>
 <input type="number"  th:field="*{qty}"  placeholder="Quantity" />
+<br/>
 </fieldset>
 </form>
 
