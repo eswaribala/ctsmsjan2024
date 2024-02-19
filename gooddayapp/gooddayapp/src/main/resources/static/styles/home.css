@@ -45,3 +45,10 @@
 	background-color: lime;
 }
 
+input[type="submit"]{
+	 background-color: black;
+	 color:lime;
+	 font-size: large;
+	 margin-left: 20%;
+}
+
