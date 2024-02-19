@@ -27,5 +27,28 @@ public class ProductService {
 		return productRepository.findAll();
 	}
 	
+	public Product updateProduct(int itemCode, int unitPrice) {		
+		Product product=this.productRepository.findById(itemCode).orElse(null);
+		if(product!=null) {
+			product.setUnitPrice(unitPrice);
+			this.productRepository.save(product);
+			return product;
+		}
+		else
+		{
+			return null;
+		}			
+		
+	}
+	
+    public boolean deleteProduct(int itemCode) {
+		boolean status=false;
+		Product product=this.productRepository.findById(itemCode).orElse(null);
+		if(product!=null) {			
+			this.productRepository.delete(product);
+			status=true;
+		}			
+		return status;		
+	}
 	
 }
