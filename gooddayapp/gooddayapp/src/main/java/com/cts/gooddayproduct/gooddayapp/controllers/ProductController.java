@@ -1,5 +1,7 @@
 package com.cts.gooddayproduct.gooddayapp.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,10 +36,23 @@ public class ProductController {
 		
 		if(productResponse!=null) {
 		  model.addAttribute("productResponse", productResponse);
-		  return "showProducts.html";
+		  return "showProduct.html";
 		}
 		else
 			return "redirect:/home";
+	}
+	
+	@GetMapping("/products")
+	public String getAllProducts(Model model) {
+		
+		List<Product> products=productService.getAllProducts();
+		
+		if(products.size()>0) {
+			model.addAttribute("products", products);
+			return "
+		}
+		
+		
 	}
 	
 

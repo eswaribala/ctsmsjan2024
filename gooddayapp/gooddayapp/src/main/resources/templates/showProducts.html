@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -23,17 +23,17 @@ Quantity
 </tr>
 </thead>
 <tbody>
-<tr>
-<td th:text="${productResponse.itemCode}">
+<tr  th:each="product : ${products}">
+<td th:text="${product.itemCode}">
 
 </td>
-<td th:text="${productResponse.itemName}">
+<td th:text="${product.itemName}">
 
 </td>
-<td th:text="${productResponse.unitPrice}">
+<td th:text="${product.unitPrice}">
 
 </td>
-<td th:text="${productResponse.qty}">
+<td th:text="${product.qty}">
 
 </td>
 </tr>
