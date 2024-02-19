@@ -1,0 +1,27 @@
+@charset "ISO-8859-1";
+
+
+
+.headerClass{
+	width: 80%;
+	height:120px;
+	border:2px solid red;
+	margin-left: 10%;
+	background-color: black;
+	color: orange;
+}
+
+.figureClass{
+	padding: 2%;
+	width: 10%;
+}
+.imgLogoClass{
+	
+	width: 10%;
+	float: left;
+}
+
+.titleClass{
+	width: 80%;
+}
+

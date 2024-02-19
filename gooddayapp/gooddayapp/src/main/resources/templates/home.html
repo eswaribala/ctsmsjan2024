@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link type="text/css" rel="stylesheet" href="styles/home.css"/>
+</head>
+<body>
+<section>
+<header class="headerClass">
+<article>
+<figure>
+<img src="images/goodday.jpeg" class="imgLogoClass"/>
+</figure>
+</article>
+<article>
+<h1>Good Day Products</h1>
+</article>
+</header>
+<article>
+<form>
+<fieldset>
+<legend>Enter Product Details</legend>
+<form method="post" th:object="${product}">
+<input type="number" th:field="*{itemCode}"  placeholder="Item Code" />
+<input type="text"   th:field="*{itemName}"  placeholder="Item Name" 
+    pattern="[a-zA-Z]{3,50}"/>
+<input type="number"  th:field="*{unitPrice}"  placeholder="Unit Price"/>
+<input type="number"  th:field="*{qty}"  placeholder="Quantity" />
+
+</form>
+
+</fieldset>
+
+</form>
+</article>
+
+</section>
+</body>
+</html>

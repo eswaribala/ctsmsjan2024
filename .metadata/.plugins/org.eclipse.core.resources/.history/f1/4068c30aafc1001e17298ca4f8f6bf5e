@@ -1,7 +1,0 @@
-package com.cts.banking.facades;
-
-@FunctionalInterface
-public interface VerticalTextCreator {
-
-	String printVerticalText(String message);
-}

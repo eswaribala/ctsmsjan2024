@@ -5,7 +5,61 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	<!-- customer instance -->
+	<bean id="customer" class="com.cts.banking.models.Customer" scope="prototype">
+	<property name="accountNo" value="234324324"></property>
+	<property name="contactNo" value="2342424545"></property>
+	<property name="email" value="param@gmail.com"></property>
+	<property name="name" ref="fullName"></property>
+	<property name="password" value="Test@123"></property>
+	<property name="addresses">
+	<list>
+	<ref bean="address1"></ref>
+	<ref bean="address2"></ref>
+	</list>
+	</property>
+	</bean>
+	<bean id="fullName" class="com.cts.banking.models.FullName">
+	 <constructor-arg index="0" name="firstName" value="Parameswari">	  
+	 </constructor-arg>
+	 <constructor-arg index="1" name="middleName" value="">	  
+	 </constructor-arg>
+	 <constructor-arg index="2" name="lastName" value="Bala">	 
+	 </constructor-arg>	
+	</bean>
+	<bean id="address1" class="com.cts.banking.models.Address">
+	<constructor-arg index="0" name="doorNo" value="16A"></constructor-arg>
+	<constructor-arg index="1" name="streetName" value="First Street"></constructor-arg>
+	<constructor-arg index="2" name="city" value="Chennai"></constructor-arg>
+	<constructor-arg index="3" name="pincode" value="602024"></constructor-arg>
+	</bean>
+	<bean id="address2" class="com.cts.banking.models.Address">
+	<constructor-arg index="0" name="doorNo" value="16A"></constructor-arg>
+	<constructor-arg index="1" name="streetName" value="Commercial Street"></constructor-arg>
+	<constructor-arg index="2" name="city" value="Bangalore"></constructor-arg>
+	<constructor-arg index="3" name="pincode" value="86001"></constructor-arg>
+	</bean>
+	<bean id="individual" class="com.cts.banking.models.Individual" parent="customer">
+	<property name="gender" ref="gender"></property>
+	<property name="dob" ref="date"></property>
+	</bean>
 	
+	<bean id="corporate" class="com.cts.banking.models.Corporate" parent="customer">
+	<property name="companyType" ref="companyType"></property>
+	</bean>	
+	
+	<bean id="gender" class="com.cts.banking.models.Gender" factory-method="valueOf">
+	  <constructor-arg value="FEMALE"></constructor-arg>
+	</bean>
+	
+	<bean id="companyType" class="com.cts.banking.models.CompanyType" factory-method="valueOf">
+	  <constructor-arg value="PRIVATE"></constructor-arg>
+	</bean>
+	<bean id="date" class="java.util.Date">
+	<constructor-arg index="0" name="year" value="80"></constructor-arg>
+	<constructor-arg index="1" name="month" value="4"></constructor-arg>
+	<constructor-arg index="2" name="day" value="21"></constructor-arg>
+	</bean>
 	
 	
 	
