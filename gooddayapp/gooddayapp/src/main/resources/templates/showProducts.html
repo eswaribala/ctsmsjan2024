@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<p>Success</p>
+<table>
+<thead>
+<tr>
+<td>
+Item Code
+</td>
+<td>
+Item Name
+</td>
+<td>
+Unit Price
+</td>
+<td>
+Quantity
+</td>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td th:text="${productResponse.itemCode}">
+
+</td>
+<td th:text="${productResponse.itemName}">
+
+</td>
+<td th:text="${productResponse.unitPrice}">
+
+</td>
+<td th:text="${productResponse.qty}">
+
+</td>
+</tr>
+
+</tbody>
+
+</table>
 </body>
 </html>
