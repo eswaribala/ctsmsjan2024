@@ -18,7 +18,8 @@
 </article>
 </header>
 <article>
-<form class="formClass" method="post" th:object="${product}">
+<form class="formClass" method="post" action="#" 
+    th:action="@{/save}" th:object="${product}">
 <fieldset class="fieldSetClass">
 <legend class="legendClass">Enter Product Details</legend>
 <label>Item Code</label>
