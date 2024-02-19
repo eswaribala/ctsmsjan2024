@@ -42,15 +42,19 @@ public class ProductController {
 			return "redirect:/home";
 	}
 	
-	@GetMapping("/products")
+	@GetMapping("/product")
 	public String getAllProducts(Model model) {
 		
 		List<Product> products=productService.getAllProducts();
 		
 		if(products.size()>0) {
 			model.addAttribute("products", products);
-			return "
+			return "showProducts.html";
+		}else {
+			return "redirect:/home";
+			
 		}
+		
 		
 		
 	}

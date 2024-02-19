@@ -18,7 +18,7 @@
 </article>
 </header>
 <article>
-<a href="#" class="aClass">Show All The Products</a>
+<a href="#" th:href="@{/products}" class="aClass">Show All The Products</a>
 
 <form class="formClass" method="post" action="#" 
     th:action="@{/save}" th:object="${product}">

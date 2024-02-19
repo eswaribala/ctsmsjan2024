@@ -56,14 +56,14 @@ input[type="submit"]{
 	text-decoration: none;
      background-color: lime;
      color: black; 
-     margin-left: 30%;
+     margin-left: 40%;
      font-size: xx-large;
 }
 
 .aClass:hover {
 	background-color: black;
      color: lime; 
-     margin-left: 30%;
+     margin-left: 40%;
      font-size: xx-large;
 }
 
