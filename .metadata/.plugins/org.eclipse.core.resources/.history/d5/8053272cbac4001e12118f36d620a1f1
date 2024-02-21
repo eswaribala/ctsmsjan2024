@@ -1,9 +1,0 @@
-package com.cts.banking.models;
-
-public class BankAccount {
-	
-	private int money;
-	
-	
-
-}

@@ -1,9 +1,0 @@
-package com.cts.banking.models;
-
-public class TollBooth {
-
-	
-	public String tollMessage() {
-		return "Crossed TollBooth";
-	}
-}

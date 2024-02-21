@@ -1,5 +1,0 @@
-package com.cts.banking.threads;
-
-public class AccountThread implements Runnable{
-
-}

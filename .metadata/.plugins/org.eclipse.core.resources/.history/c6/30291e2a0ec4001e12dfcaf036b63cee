@@ -1,7 +1,0 @@
-package com.cts.banking.facades;
-
-public interface TransactionFacade {
-	
-	boolean validateTransaction();
-
-}
