@@ -1,0 +1,38 @@
+server:
+  port: 8765
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka 
+
+spring:
+  application:
+    name: cts-gateway-service
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+      routes:
+         - id: banking-account-api
+           uri: lb://BANKING-ACCOUNT-API
+           predicates:
+              - Path=/**
+
+management:
+    endpoints:
+       web:
+        exposure:
+           include: "*"  
+           
+apiUrl:
+   http://localhost:9091/
+api:
+    tests/v1.0/admin/
+
+boauser:
+   eswaribala
+password:
+   Test@123
