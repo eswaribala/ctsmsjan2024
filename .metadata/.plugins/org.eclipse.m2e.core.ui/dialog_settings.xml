@@ -70,6 +70,7 @@
 	</section>
 	<section name="MavenProjectImportWizardPage">
 		<list key="rootDirectory">
+			<item value="E:\ctsjan2024ws\configserver\configserver"/>
 			<item value="E:\ctsjan2024ws\gooddayapp\gooddayapp"/>
 		</list>
 		<list key="projectNameTemplate">
