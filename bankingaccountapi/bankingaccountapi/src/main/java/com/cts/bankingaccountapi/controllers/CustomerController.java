@@ -45,7 +45,8 @@ public class CustomerController {
 		return this.customerService.getCustomers();
 	}
 	
-	@GetMapping("/v1.0/accounts/{accountNo}")
+	@GetMapping(value="/v1.0/accounts/{accountNo}",
+			produces = { "application/json"})
 	@CrossOrigin(allowedHeaders = "*",origins = "*", methods=RequestMethod.GET)
 	public Customer getCustomerByAccountNo(@PathVariable("accountNo") 
 	long accountNo){
