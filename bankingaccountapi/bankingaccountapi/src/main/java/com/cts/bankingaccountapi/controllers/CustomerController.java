@@ -44,6 +44,23 @@ public class CustomerController {
 	public List<Customer> getAllCustomers(){
 		return this.customerService.getCustomers();
 	}
+	
+	@GetMapping("/v1.0/{accountNo}")
+	@CrossOrigin(allowedHeaders = "*",origins = "*", methods=RequestMethod.GET)
+	public ResponseEntity<ResponseWrapper> getCustomerByAccountNo(@PathVariable("accountNo") 
+	long accountNo){
+	   Customer customer =	this.customerService.getCustomerByAccountNo(accountNo);
+	   if(customer!=null) {
+			return ResponseEntity.status(HttpStatus.OK)
+					.body(new ResponseWrapper<Customer>(customer));
+		}
+		else {
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+					new ResponseWrapper("Customer Could not be found"));
+		}
+	
+	}
+	
 	@GetMapping("/v1.0/{contactNo}")
 	@CrossOrigin(allowedHeaders = "*",origins = "*", methods=RequestMethod.GET)
 	public List<Customer> getAllCustomersByContactNo(@PathVariable("contactNo") 

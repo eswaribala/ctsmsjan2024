@@ -35,6 +35,11 @@ public class CustomerService {
 	public List<Customer> getCustomers(){
 		return this.customerRepository.findAll();
 	}
+	
+	
+	public Customer getCustomerByAccountNo(long accountNo) {
+		return this.customerRepository.findById(accountNo).orElse(null);
+	}
 
 	//search by contact no (non primary key)
 	

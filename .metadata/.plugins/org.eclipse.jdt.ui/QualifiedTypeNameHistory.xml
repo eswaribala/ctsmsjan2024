@@ -1,30 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.BeanNameAware"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.DisposableBean"/>
-    <fullyQualifiedTypeName name="org.springframework.context.ApplicationContextAware"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.BeanFactoryAware"/>
-    <fullyQualifiedTypeName name="jakarta.annotation.PostConstruct"/>
-    <fullyQualifiedTypeName name="jakarta.annotation.PreDestroy"/>
-    <fullyQualifiedTypeName name="org.slf4j.LoggerFactory"/>
-    <fullyQualifiedTypeName name="org.slf4j.Logger"/>
-    <fullyQualifiedTypeName name="org.springframework.context.annotation.AnnotationConfigApplicationContext"/>
-    <fullyQualifiedTypeName name="com.cts.banking.models.Employee"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.config.BeanPostProcessor"/>
-    <fullyQualifiedTypeName name="com.cts.banking.models.EmployeeBeanPostProcessor"/>
-    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
-    <fullyQualifiedTypeName name="org.springframework.context.annotation.Import"/>
-    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
     <fullyQualifiedTypeName name="jakarta.persistence.GeneratedValue"/>
-    <fullyQualifiedTypeName name="java.time.LocalDate"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Inheritance"/>
     <fullyQualifiedTypeName name="org.springframework.format.annotation.DateTimeFormat"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
     <fullyQualifiedTypeName name="lombok.EqualsAndHashCode"/>
     <fullyQualifiedTypeName name="jakarta.persistence.Enumerated"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
     <fullyQualifiedTypeName name="org.springframework.ui.Model"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
     <fullyQualifiedTypeName name="lombok.extern.slf4j.Slf4j"/>
@@ -60,4 +39,25 @@
     <fullyQualifiedTypeName name="com.cts.bankingaccountapi.models.Customer"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.cloud.config.server.EnableConfigServer"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.netflix.eureka.server.EnableEurekaServer"/>
+    <fullyQualifiedTypeName name="org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer"/>
+    <fullyQualifiedTypeName name="org.springframework.data.rest.core.config.RepositoryRestConfiguration"/>
+    <fullyQualifiedTypeName name="org.springframework.web.servlet.config.annotation.CorsRegistry"/>
+    <fullyQualifiedTypeName name="org.springframework.cloud.client.discovery.EnableDiscoveryClient"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Entity"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Table"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Inheritance"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Id"/>
+    <fullyQualifiedTypeName name="jakarta.persistence.Column"/>
+    <fullyQualifiedTypeName name="com.cts.bankingretailapi.models.Account"/>
+    <fullyQualifiedTypeName name="com.cts.bankingretailapi.dtos.ResponseWrapper"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Configuration"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.Bean"/>
+    <fullyQualifiedTypeName name="org.springframework.security.web.util.matcher.AntPathRequestMatcher"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.configuration.EnableWebSecurity"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.annotation.web.builders.HttpSecurity"/>
+    <fullyQualifiedTypeName name="org.springframework.security.web.SecurityFilterChain"/>
+    <fullyQualifiedTypeName name="org.springframework.security.config.Customizer"/>
 </qualifiedTypeNameHistroy>
