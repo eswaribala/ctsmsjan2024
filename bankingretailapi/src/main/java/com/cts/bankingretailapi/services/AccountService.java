@@ -2,9 +2,13 @@ package com.cts.bankingretailapi.services;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.json.JsonParser;
+import org.springframework.boot.json.JsonParserFactory;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -34,16 +38,27 @@ public class AccountService {
 	@Value("${serviceUrl}")
 	private String serviceUrl;
 	
-	private ResponseEntity responseEntity;
+	private ResponseEntity<String> response;
 	
 	public Account addAccount(Account account) {
-		
+	{};
 		if(account.getAccountNo()>0) {
 			
-		    responseEntity=restTemplate.exchange(serviceUrl+account.getAccountNo(),
-					HttpMethod.GET,null,ResponseEntity.class);
-			log.info("Response"+responseEntity);
-			return this.accountRepository.save(account);
+		    response=restTemplate.exchange(serviceUrl+account.getAccountNo(),
+					HttpMethod.GET,null,String.class);
+		    System.out.println(response.getBody());
+			log.info("Response"+response.getBody());
+			JsonParser springParser = JsonParserFactory.getJsonParser();
+		      Map < String, Object > map = springParser.parseMap(response.getBody());
+		      String mapArray[] = new String[map.size()];
+		      System.out.println("Items found: " + mapArray.length);
+		      int i = 0;
+		      for (Map.Entry < String, Object > entry: map.entrySet()) {
+		        System.out.println(entry.getKey() + " = " + entry.getValue());
+		        i++;
+		      }
+			return null;
+			//return this.accountRepository.save(account);
 		}
 		else {
 			return null;
