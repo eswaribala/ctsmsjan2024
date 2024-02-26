@@ -41,13 +41,15 @@ public class AccountService {
 	private ResponseEntity<String> response;
 	
 	public Account addAccount(Account account) {
-	{};
+	
+		long recdAccountNo=0;
 		if(account.getAccountNo()>0) {
 			
 		    response=restTemplate.exchange(serviceUrl+account.getAccountNo(),
 					HttpMethod.GET,null,String.class);
 		    System.out.println(response.getBody());
 			log.info("Response"+response.getBody());
+			if(response.getBody()!=null) {
 			JsonParser springParser = JsonParserFactory.getJsonParser();
 		      Map < String, Object > map = springParser.parseMap(response.getBody());
 		      String mapArray[] = new String[map.size()];
@@ -55,10 +57,19 @@ public class AccountService {
 		      int i = 0;
 		      for (Map.Entry < String, Object > entry: map.entrySet()) {
 		        System.out.println(entry.getKey() + " = " + entry.getValue());
+		        if(entry.getKey()=="accountNo") {
+		        	recdAccountNo=Long.parseLong(entry.getValue().toString());
+		        }
 		        i++;
 		      }
-			return null;
-			//return this.accountRepository.save(account);
+			   
+		      if(recdAccountNo==account.getAccountNo())
+			     return this.accountRepository.save(account);
+		      else
+		    	  return null;
+			}else
+				return null;
+			
 		}
 		else {
 			return null;
