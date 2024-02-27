@@ -78,13 +78,9 @@
         <version>2.3.1</version>
     </dependency>
 
-	  <dependency>
-	  	<groupId>com.cts</groupId>
-	  	<artifactId>configserver</artifactId>
-	  	<version>0.0.1-SNAPSHOT</version>
-	  </dependency>
-	  
-	  <!--swagger-->
+	
+	  <!--documentation-->
+		<!--swagger-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -95,10 +91,11 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
         </dependency>
-	  <dependency>
+	  	<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-rest-hal-explorer</artifactId>
 		</dependency>
+
 	  
 	</dependencies>
 	<dependencyManagement>

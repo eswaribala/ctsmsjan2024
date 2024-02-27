@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.RegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -19,15 +20,19 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import com.cts.jwtapi.filters.JwtAuthenticationFilter;
 import com.cts.jwtapi.services.UserAuthService;
-
+@Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
 	@Autowired
-	private UserAuthService userAuthService;	
+	private UserAuthService userAuthService;
+
 	@Autowired
 	private JwtAuthenticationFilter jwtAuthenticationFilter;
+
 	@Autowired
-	private ApiAuthenticationEntryPoint apiAuthenticationEntryPoint;
+	private ApiAuthenticationEntryPoint authenticationEntryPoint;	
+	
 
 
 	@Autowired
@@ -39,22 +44,24 @@ public class SecurityConfig {
 	 public WebSecurityCustomizer ignoringCustomizer() {
 	        return (web) -> web.ignoring().requestMatchers("/signin", "/signup");
 	 }
-	
-	@Bean
-	public SecurityFilterChain uiFilterChain(HttpSecurity http) throws Exception {
 
+	 @Bean
+	  public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 		 http.csrf(csrf -> csrf.disable()).authorizeHttpRequests(authz -> authz
 				 .requestMatchers("/signin", "/signup")
 		 .permitAll().anyRequest()
 			.authenticated())
 		 .exceptionHandling((exception)-> 
-		 exception.authenticationEntryPoint(apiAuthenticationEntryPoint))
+		 exception.authenticationEntryPoint(authenticationEntryPoint))
 		 .sessionManagement(sess -> sess.sessionCreationPolicy
 				 (SessionCreationPolicy.STATELESS))  		 
 	     .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
 	       return http.build();
-	}
+	   }
+
+
+
 	@Bean
 	public RegistrationBean jwtAuthFilterRegister(JwtAuthenticationFilter filter) {
 		FilterRegistrationBean<JwtAuthenticationFilter> registrationBean = new FilterRegistrationBean<>(filter);
@@ -66,9 +73,16 @@ public class SecurityConfig {
      public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
          return authenticationConfiguration.getAuthenticationManager();
      }
+ 
+	
+		/*
+		 * @Bean public AuthenticationManager authenticationManagerBean() throws
+		 * Exception { return super.authenticationManagerBean(); }
+		 */
 
-	 @Bean
-		public PasswordEncoder passwordEncoder() {
-			return new BCryptPasswordEncoder();
-		}
+	@Bean
+	public PasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 }
