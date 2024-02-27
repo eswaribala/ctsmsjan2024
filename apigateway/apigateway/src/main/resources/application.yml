@@ -27,6 +27,14 @@ spring:
            uri: lb://BANKING-RETAIL-API
            predicates:
               - Path=/accounts/v1.0/**  
+    
+  security:
+     oauth2:
+       client:
+          registration:
+               github:
+                  clientId: 5c1cf6a5fa46e77287a6
+                  clientSecret: 0c2507d316d37a7230aec9ac5453d7c7f6cd866c
 management:
     endpoints:
        web:
@@ -34,3 +42,4 @@ management:
            include: "*"  
            
 
+  
