@@ -19,9 +19,16 @@ public class UserService {
     
     
     public User saveUser(User user) {
+    	User testUser=getUserByUserName(user.getUserName());
+    	if(testUser == null)
+    	{
+    	 user.setPassword(passwordEncoder.encode(user.getPassword()));
+    	 return this.userRepository.save(user);
+    	}else
+    	{
+    		return null;
+    	}
     	
-    	user.setPassword(passwordEncoder.encode(user.getPassword()));
-    	return this.userRepository.save(user);
     	
     }
     
