@@ -1,84 +1,80 @@
 package com.cts.jwtapi.configurations;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.stream.Collectors;
+
+import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
 import org.springframework.stereotype.Component;
 
 import com.cts.jwtapi.exceptions.JWTMissingTokenException;
 import com.cts.jwtapi.exceptions.JwtTokenMalformedException;
-import com.cts.jwtapi.exceptions.UserNotFoundException;
 import com.cts.jwtapi.models.Role;
 import com.cts.jwtapi.models.User;
-import com.cts.jwtapi.services.UserService;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
-import lombok.Data;
-@Data
+
+
 @Component
+//@EnableConfigurationProperties(VaultConfiguration.class)
+
 public class JwtUtil {
-	
+
 	@Value("${jwt.secret}")
 	private String jwtSecret;
+	//private final VaultConfiguration vaultConfiguration;
+	//vault initialization
+	//public JwtUtil(VaultConfiguration configuration) {
+	  //  this.vaultConfiguration = configuration;
+	 // }
+
 	@Value("${jwt.token.validity}")
 	private long tokenValidity;
-	@Autowired
-	private UserService userService;
-	
-	public User getUser(String token) {
-     User user=new User();
-	try {	
-	  Claims claims=Jwts.parser().setSigningKey(jwtSecret).parseClaimsJwt(token).getBody(); 	 
-	  user.setUserName(claims.getSubject());	  
-	  List<Role> roles=userService.getUserRoles(user.getUserName());
-	  user.setRoles(roles);
-	  }catch(UserNotFoundException ex) {
-		  throw new UserNotFoundException("User not found....");
-	  }
-	  
-	  return user;	
-		
-	}
-	
-	
-	public String generateToken(User user) {		
-		Claims claims=Jwts.claims().setSubject(user.getUserName());
-		claims.put("roles", user.getRoles());
-		long currentTime=System.currentTimeMillis();
-		long expiryTime=currentTime+tokenValidity;		
-		return Jwts.builder().setClaims(claims)
-		.setExpiration(new Date(expiryTime))
-		.setIssuedAt(new Date(currentTime))
-		.signWith(SignatureAlgorithm.HS256, jwtSecret).compact();		
-	}
-	
-	public void validateToken(String token) {
+
+	public User getUser(final String token) {
 		try {
-		Jwts.parser().setSigningKey(jwtSecret).parseClaimsJwt(token);
+			Claims body = Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody();
+			User user = new User();
+			user.setUserName(body.getSubject());
+			List<Role> roles = Arrays.asList(body.get("roles").toString().split(",")).stream().map(r -> new Role(r))
+					.collect(Collectors.toList());
+			user.setRoles(roles);
+			return user;
+		} catch (Exception e) {
+			System.out.println(e.getMessage() + " => " + e);
 		}
-		catch(SignatureException ex) {
-			throw new SignatureException("JWT Signature Error....");
+		return null;
+	}
+
+	public String generateToken(User user) {
+		Claims claims = Jwts.claims().setSubject(user.getUserName());
+		claims.put("roles", user.getRoles());
+		long nowMillis = System.currentTimeMillis();
+		long expMillis = nowMillis + tokenValidity;
+		Date exp = new Date(expMillis);
+		return Jwts.builder().setClaims(claims).setIssuedAt(new Date(nowMillis)).setExpiration(exp)
+				.signWith(SignatureAlgorithm.HS512,jwtSecret).compact();
+	}
+
+	public void validateToken(final String token) {
+		try {
+			System.out.println(token);
 			
-		}
-		catch(MalformedJwtException ex) {
-			throw new JwtTokenMalformedException("JWT Token Torned....");
-		}
-		catch(ExpiredJwtException ex) {
-			throw new JwtTokenMalformedException("JWT Token Expired....");
-		}
-		catch(UnsupportedJwtException ex) {
-			throw new UnsupportedJwtException("Unsupported Token....");
-		}
-		catch(IllegalArgumentException ex) {
-			throw new JWTMissingTokenException("Invlid Token Supplied....");
+			Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+		} catch (SignatureException ex) {
+			throw new JwtTokenMalformedException("Invalid JWT signature");
+		} catch (MalformedJwtException ex) {
+			throw new JwtTokenMalformedException("Invalid JWT token");
+		} catch (ExpiredJwtException ex) {
+			throw new JwtTokenMalformedException("Expired JWT token");
+		} catch (UnsupportedJwtException ex) {
+			throw new JwtTokenMalformedException("Unsupported JWT token");
+		} catch (IllegalArgumentException ex) {
+			throw new JWTMissingTokenException("JWT claims string is empty.");
 		}
 	}
 

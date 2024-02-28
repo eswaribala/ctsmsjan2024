@@ -41,5 +41,15 @@ public class UserAuthService implements UserDetailsService{
 			
 
 	}
+	public User getUserByUsername(String username) {
+		User user= userService.getUserByUserName(username);
+
+		if (user != null) {
+
+			return user;
+		}
+
+		return null;
+	}
 
 }

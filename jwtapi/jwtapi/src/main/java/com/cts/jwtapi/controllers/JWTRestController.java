@@ -1,14 +1,17 @@
 package com.cts.jwtapi.controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
-import org.apache.hc.core5.http.HttpStatus;
+import org.apache.hc.client5.http.auth.InvalidCredentialsException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,77 +22,73 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cts.jwtapi.configurations.JwtUtil;
 import com.cts.jwtapi.dtos.JwtRequest;
-import com.cts.jwtapi.dtos.ResponseWrapper;
-import com.cts.jwtapi.exceptions.InvalidCredentialException;
+import com.cts.jwtapi.dtos.JwtResponse;
 import com.cts.jwtapi.exceptions.UserDisabledException;
 import com.cts.jwtapi.models.Role;
 import com.cts.jwtapi.models.User;
 import com.cts.jwtapi.services.UserAuthService;
 import com.cts.jwtapi.services.UserService;
 
+
+
+
+
 @RestController
-public class JWTRestController {
+public class JwtRestController {
+
 	@Autowired
-	private UserService userService;
+	private JwtUtil jwtUtil;
+
 	@Autowired
 	private UserAuthService userAuthService;
 	@Autowired
-	private AuthenticationManager authenticationManager;
+	private UserService userService;
+
 	@Autowired
-	private JwtUtil jwtUtil;
-	
-	@PostMapping("/signin")
-	public ResponseEntity<ResponseWrapper> signIn(@RequestBody JwtRequest jwtRequest){
+	private AuthenticationManager authenticationManager;
+
+	@PostMapping(value="/signin",produces = {"application/json"})
+	public ResponseEntity<JwtResponse> generateJwtToken(@RequestBody JwtRequest jwtRequest) throws InvalidCredentialsException {
 		
+		System.out.println(jwtRequest.getUserName()+""+jwtRequest.getUserPwd());
 		try {
-			
-			authenticationManager.authenticate(new 
-					UsernamePasswordAuthenticationToken
-					(jwtRequest.getUserName(),jwtRequest.getUserPwd()));
+			authenticationManager.authenticate(
+					new UsernamePasswordAuthenticationToken(jwtRequest.getUserName(), jwtRequest.getUserPwd()));
+	
+		} catch (DisabledException e) {
+			throw new UserDisabledException("User Inactive");
+		} catch (BadCredentialsException e) {
+			throw new InvalidCredentialsException("Invalid Credentials");
 		}
-		catch(DisabledException ex) {
-			throw new UserDisabledException("User Not Allowed...");
-		}
-		catch(BadCredentialsException ex) {
-			throw new InvalidCredentialException("Invalid Credential Exception...");
-		}
+		UserDetails userDetails = userAuthService.loadUserByUsername(jwtRequest.getUserName());
+		String username = userDetails.getUsername();
+		String userpwd = userDetails.getPassword();
+		List<String> roles = userDetails.getAuthorities().stream().map(r -> r.getAuthority())
+				.collect(Collectors.toList());
 		
 		
-		UserDetails userDetails=userAuthService.loadUserByUsername(jwtRequest.getUserName());
-		
-		String userName=userDetails.getUsername();
-		String password=userDetails.getPassword();
-		List<String> roles=userDetails.getAuthorities().stream().map(r -> r.getAuthority())
-		.collect(Collectors.toList());
-		
-		List<Role> roleList=new ArrayList(roles);		
-		
-		User user =new User();
-		user.setUserName(userName);
-		user.setPassword(password);
+		User user = new User();
+		user.setUserName(username);
+		user.setPassword(userpwd);
+		List<Role> roleList = new ArrayList(roles);
 		user.setRoles(roleList);
-		
-		String token=jwtUtil.generateToken(user);
-		
-		return ResponseEntity.status(HttpStatus.SC_ACCEPTED).body(new ResponseWrapper(token));
-		
-		
-		
+		String token = jwtUtil.generateToken(user);
+		return new ResponseEntity<JwtResponse>(new JwtResponse(token), HttpStatus.OK);
 	}
-	
-	@PostMapping("/signup")
-	public ResponseEntity<ResponseWrapper> signUp(@RequestBody User user){
-		  User userObj=userService.saveUser(user);	
-		  if(userObj!=null) {
-			  return ResponseEntity.status(HttpStatus.SC_CREATED)
-					  .body(new ResponseWrapper("User Successfully created"));
-		  }else {
-			  
-			  return ResponseEntity.status(HttpStatus.SC_BAD_REQUEST)
-					  .body(new ResponseWrapper("User Already Exists")); 
-		  }
-		
+
+	@PostMapping(value="/signup",produces = {"application/json"})
+	public ResponseEntity<String> signup(@RequestBody User user) {
+		System.out.print(user.getUserName());
+		System.out.print(user.getPassword());
+		System.out.print(user.getRoles());
+		User userObj = userAuthService.getUserByUsername(user.getUserName());
+
+		if (userObj == null) {
+			userService.saveUser(user);
+			return new ResponseEntity<String>("User successfully registered", HttpStatus.OK);
+		} else {
+			return new ResponseEntity<String>("User already exists", HttpStatus.CONFLICT);
 		}
-	
+	}
 
 }
